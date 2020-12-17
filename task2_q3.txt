@@ -1,0 +1,23 @@
+INSERT INTO project2.vehicle (VehicleID) VALUES ('WAUTFAFH0E0010614');
+UPDATE project2.vehicle SET Description = 'Infiniti FX 35' WHERE VehicleID = 'WAUTFAFH0E0010614';
+UPDATE project2.vehicle SET Year = '2020' WHERE VehicleID = 'WAUTFAFH0E0010614';
+UPDATE project2.vehicle SET Type = '1' WHERE VehicleID = 'WAUTFAFH0E0010614';
+UPDATE project2.vehicle SET Category = '1' WHERE VehicleID = 'WAUTFAFH0E0010614';
+
+#Query 3
+SELECT v.VehicleID, v.Description, v.Year, v.Type, v.Category,
+r.StartDate, r.OrderDate, r.RentalType, r.Qty, r.ReturnDate, r.TotalAmount, r.PaymentDate
+FROM project2.vehicle AS v 
+INNER JOIN project2.rental AS r 
+ON v.VehicleID = r.VehicleID
+WHERE v.Type = '1' AND v.Category = '1' AND r.Returned = '1';
+INSERT INTO project2.rental (CustID) VALUES('222');
+UPDATE project2.rental SET VehicleID = 'WAUTFAFH0E0010614';
+UPDATE project2.rental SET StartDate = '2019-09-09';
+UPDATE project2.rental SET OrderDate = '2019-09-09';
+UPDATE project2.rental SET RentalType = '1';
+UPDATE project2.rental SET Qty = '1';
+UPDATE project2.rental SET ReturnDate = '2019-09-09';
+UPDATE project2.rental SET TotalAmount = '1';
+UPDATE project2.rental SET PaymentDate = '2019-09-09';
+UPDATE project2.rental SET Returned = '1';
