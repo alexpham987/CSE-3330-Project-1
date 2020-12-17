@@ -1,0 +1,11 @@
+SELECT r.TotalAmount
+FROM project2.rental AS r
+INNER JOIN project2.customer AS c
+ON r.CustID = c.CustID
+WHERE r.ReturnDate = '2019-11-15'
+AND c.Name = 'G. Clarkson'
+AND r.VehicleID = '19VDE1F3XEE414842';
+UPDATE project2.rental SET PaymentDate = '2020-12-16'
+WHERE ReturnDate = '2019-11-15'
+AND CustID = '210'
+AND VehicleID = '19VDE1F3XEE414842';
