@@ -1,48 +1,58 @@
 <html><body>
+<center>
 <?php
 
-$customername = $_POST['customername'];
 
-  $db_host = '127.0.0.1';
-  $db_user = 'root';
-  $db_password = 'root';
-  $db_db = 'Project2';
-  $db_port = 3306;
-  $db_socket = 'tmp/mysql.sock';
+    $customername = $_POST['customername'];
+    $customerphonenumber = $_POST['customerphonenumber'];
 
-  $mysqli = @new mysqli(
-    $db_host,
-    $db_user,
-    $db_password,
-    $db_db,
-    $db_port,
-    $db_socket
-  );
+    $db_host = '127.0.0.1';
+    $db_user = 'root';
+    $db_password = 'root';
+    $db_db = 'Project2';
+    $db_port = 3306;
+    $db_socket = 'tmp/mysql.sock';
+
+    $mysqli = @new mysqli(
+      $db_host,
+      $db_user,
+      $db_password,
+      $db_db,
+      $db_port,
+      $db_socket
+    );
 	
-  if ($mysqli->connect_error) {
-    echo 'Errno: '.$mysqli->connect_errno;
-    echo '<br>';
-    echo 'Error: '.$mysqli->connect_error;
-    exit();
+    if ($mysqli->connect_error) 
+    {
+      echo 'Errno: '.$mysqli->connect_errno;
+      echo '<br>';
+      echo 'Error: '.$mysqli->connect_error;
+      exit();
+    }
+
+  $sql = "INSERT INTO project2.customer (NAME) VALUES ('$customername')";
+  if ($result = $mysqli -> query($sql))
+  {
+      echo '<br>Succesfully added customer name: '.$customername, '.<br>';
   }
-
-  echo 'Success: A proper connection to MySQL was made.';
-  echo '<br>';
-  echo 'Host information: '.$mysqli->host_info;
-  echo '<br>';
-  echo 'Protocol version: '.$mysqli->protocol_version;
-
-  echo 'Customer Name: ' .$customername;
-
-  //Insert new customery
-$sql = "INSERT INTO project2.customer (NAME) VALUES ('$customername')";
-if ($result = $mysqli -> query($sql))
-{
-    echo 'Succesfully added customer, <br>';
-}
+  
+  $sql = "UPDATE project2.customer SET Phone = ('$customerphonenumber') WHERE NAME = ('$customername')";
+  if ($result = $mysqli -> query($sql))
+  {
+      echo 'Succesfully added customer phone number: '.$customerphonenumber, '.<br>';
+  }
 
 $mysqli->close();
 
-
 ?>
+
+<form action="Task1.html" method="post"> 
+      <p><button type = "submit">Add another customer</button><p>
+</form>
+
+<form action="Home_Screen" method="post"> 
+      <p><button type = "submit">Return to the home screen</button><p>
+</form>
+</center>
+
 </body></html>
