@@ -1,0 +1,9 @@
+SET @var = 'something';
+
+SELECT CASE WHEN c.CustID = @var THEN c.CustID, c.Name, CONCAT('$', r.TotalAmount) AS RemainingBalance
+			WHEN c.Name = @var THEN c.CustID, c.Name, CONCAT('$', r.TotalAmount) AS RemainingBalance
+            WHEN @var LIKE CONCAT('%', c.Name, '%') THEN c.CustID, c.Name, CONCAT('$', r.TotalAmount) AS RemainingBalance
+            ELSE END
+FROM project2.customer AS c
+INNER JOIN project2.rental AS r ON c.CustID = r.CustID
+ORDER BY r.TotalAmount ASC;
