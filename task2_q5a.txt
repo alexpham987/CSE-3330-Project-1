@@ -1,4 +1,4 @@
-SET @var = 'something';
+SET @var = 'user_input';
 SELECT CASE WHEN c.CustID = @var THEN (c.CustID, c.Name, CONCAT('$', r.TotalAmount) AS RemainingBalance)
 	    	WHERE c.CustID = @var
 	    WHEN c.Name = @var THEN (c.CustID, c.Name, CONCAT('$', r.TotalAmount) AS RemainingBalance)
