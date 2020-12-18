@@ -1,12 +1,12 @@
 #Query 5b
 SET @var = 'user_input';
 SELECT CASE WHEN v.VehicleID = @var THEN (v.VehicleID AS VIN, v.Description, r.TotalAmount / (r.RentalType * r.Qty) AS AvgDailyPrice)
-				WHERE v.VehicleID = @var
-			WHEN v.Description = @var THEN (v.VehicleID AS VIN, v.Description, r.TotalAmount / (r.RentalType * r.Qty) AS AvgDailyPrice)
-				WHERE v.VehicleID = @var
+		WHERE v.VehicleID = @var
+	    WHEN v.Description = @var THEN (v.VehicleID AS VIN, v.Description, r.TotalAmount / (r.RentalType * r.Qty) AS AvgDailyPrice)
+		WHERE v.VehicleID = @var
             WHEN @var LIKE CONCAT(v.Description, '%') THEN (v.VehicleID AS VIN, v.Description, r.TotalAmount / (r.RentalType * r.Qty) AS AvgDailyPrice)
-				WHERE @var LIKE CONCAT(v.Description, '%')
+		WHERE @var LIKE CONCAT(v.Description, '%')
             ELSE (c.CustID, c.Name, CONCAT('$', r.TotalAmount) AS RemainingBalance)
-				ORDER BY r.TotalAmount / (r.RentalType * r.Qty) ASC END
+		ORDER BY r.TotalAmount / (r.RentalType * r.Qty) ASC END
 FROM project2.vehicle AS v
 INNER JOIN project2.rental AS r ON v.VehicleID = r.VehicleID;
