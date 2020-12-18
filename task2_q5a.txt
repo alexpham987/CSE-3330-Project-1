@@ -1,10 +1,9 @@
-SET @var = 'user_input';
-SELECT CASE WHEN c.CustID = @var THEN (c.CustID, c.Name, CONCAT('$', r.TotalAmount) AS RemainingBalance)
-	    	WHERE c.CustID = @var
-	    WHEN c.Name = @var THEN (c.CustID, c.Name, CONCAT('$', r.TotalAmount) AS RemainingBalance)
-	    	WHERE c.Name = @var
-            WHEN @var LIKE CONCAT(c.Name, '%') THEN (c.CustID, c.Name, CONCAT('$', r.TotalAmount) AS RemainingBalance)
-	    	WHERE @var LIKE CONCAT(c.Name, '%')
+SELECT CASE WHEN c.CustID = '222' THEN (c.CustID, c.Name, CONCAT('$', r.TotalAmount) AS RemainingBalance)
+		WHERE c.CustID = '222'
+	    WHEN c.Name = 'Alex' THEN (c.CustID, c.Name, CONCAT('$', r.TotalAmount) AS RemainingBalance)
+		WHERE c.Name = 'Alex'
+            WHEN 'Al' LIKE CONCAT(c.Name, '%') THEN (c.CustID, c.Name, CONCAT('$', r.TotalAmount) AS RemainingBalance)
+		WHERE 'Al' LIKE CONCAT(c.Name, '%')
             ELSE (c.CustID, c.Name, CONCAT('$', r.TotalAmount) AS RemainingBalance)
 		ORDER BY r.TotalAmount ASC END
 FROM project2.customer AS c
