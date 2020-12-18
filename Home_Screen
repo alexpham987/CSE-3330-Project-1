@@ -1,0 +1,27 @@
+<html>
+    <body>
+        <center>
+        <h4>Please select the task you would like to perform.</h4>
+        <form action="Task1.html" method="post"> 
+            <p><button type = "submit">Enter New Customer</button></p>
+        </form>
+        <form action="Task2.html" method="post"> 
+            <p><button type = "submit">Add a New Vehicle</button></p>
+        </form>
+        <form action="Task3.html" method="post"> 
+            <p><button type = "submit">Enter a New Rental Reservation</button></p>
+        </form>
+        </form>
+        <form action="Task4.html" method="post"> 
+            <p><button type = "submit">Return a Rental</button></p>
+        </form>
+        </form>
+        <form action="Task5a.html" method="post"> 
+            <p><button type = "submit">View Remaining Balance</button></p>
+        </form>
+        <form action="Task5b.html" method="post"> 
+            <p><button type = "submit">View Vehicle Daily Prices</button></p>
+        </form>
+        </center>
+    </body>
+</html>
